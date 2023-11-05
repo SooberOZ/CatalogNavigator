@@ -1,0 +1,12 @@
+﻿@model CatalogNavigator.DataLayer.Model.Catalog
+
+<h1>Корневой каталог: @Model.Name</h1>
+
+<ul>
+    @foreach (var subCatalog in Model.SubCatalogs)
+    {
+        <li>
+            <a asp-controller="Catalog" asp-action="ShowSubCatalogs" asp-route-catalogId="@subCatalog.Id">@subCatalog.Name</a>
+        </li>
+    }
+</ul>

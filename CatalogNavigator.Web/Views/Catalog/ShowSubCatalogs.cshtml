@@ -1,0 +1,10 @@
+﻿@model List<CatalogNavigator.DataLayer.Model.Catalog>
+
+<h1>Дочерние каталоги</h1>
+
+<ul>
+    @foreach (var subCatalog in Model)
+    {
+        <li>@subCatalog.Name</li>
+    } 
+</ul>
