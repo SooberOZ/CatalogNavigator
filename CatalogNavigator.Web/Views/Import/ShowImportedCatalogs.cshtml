@@ -1,0 +1,25 @@
+﻿@model List<CatalogNavigator.DataLayer.Model.Catalog>
+
+<h1>Imported Catalogs</h1>
+
+@if (Model != null && Model.Any())
+{
+    <ul>
+        @foreach (var catalog in Model)
+        {
+            <li>@catalog.Name</li>
+            <ul>
+                @foreach (var subCatalog in catalog.SubCatalogs)
+                {
+                    <li>@subCatalog.Name</li>
+                }
+            </ul>
+        }
+    </ul>
+}
+else
+{
+    <p>No imported catalogs to display.</p>
+}
+
+<a asp-controller="Catalog" asp-action="Index">Back to Catalog</a>

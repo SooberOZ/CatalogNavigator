@@ -34,8 +34,7 @@ namespace CatalogNavigator.Web.Controllers
             {
                 var jsonString = await streamReader.ReadToEndAsync();
                 var importedCatalogs = JsonConvert.DeserializeObject<List<Catalog>>(jsonString);
-
-                return RedirectToAction("Index");
+                return View("ShowImportedCatalogs", importedCatalogs);
             }
         }
     }
