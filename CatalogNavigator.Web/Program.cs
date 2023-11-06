@@ -35,8 +35,7 @@ namespace CatalogNavigator.Web
 
             app.MapControllerRoute(
                 name: "new",
-                pattern: "{controller=Import}/{action=Index}/{id?}",
-                defaults: new { controller = "Import", action = "Index" });
+                pattern: "new/{controller=Import}/{action=Import}/{id?}");
 
             app.Run();
         }

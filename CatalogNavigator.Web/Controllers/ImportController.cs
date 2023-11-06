@@ -15,19 +15,26 @@ namespace CatalogNavigator.Web.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View(); // Отобразить страницу с формой импорта
+        }
+
         [HttpPost]
         public async Task<IActionResult> Import(IFormFile file)
         {
             if (file == null || file.Length == 0)
             {
                 ModelState.AddModelError("File", "Please select a file.");
-                return View("Import");
+                return View("Index");
             }
 
             using (var streamReader = new StreamReader(file.OpenReadStream()))
             {
                 var jsonString = await streamReader.ReadToEndAsync();
                 var importedCatalogs = JsonConvert.DeserializeObject<List<Catalog>>(jsonString);
+
                 return RedirectToAction("Index");
             }
         }
